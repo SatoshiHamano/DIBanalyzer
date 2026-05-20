@@ -1,0 +1,32 @@
+# Python/runtime cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS / editor-local files
+.DS_Store
+.idea/
+
+# Logs and local runtime outputs
+*.log
+logfile
+splot.log
+
+# Large/generated science products kept outside normal version control
+*.fits
+*.fit
+
+# Generated figures
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Large generated/intermediate products
+waveshift_fit_*.dat
+waveshift_parameter/*.dat
+temporaly_files/
+exportToHTML/
+astro_scripts_uibk_test/
+*.npz
+*.tar.gz
