@@ -27,6 +27,7 @@ legacy_untracked/
 *.pdf
 
 # Large generated/intermediate products
+Correlation/
 waveshift_fit_*.dat
 waveshift_parameter/*.dat
 temporaly_files/
