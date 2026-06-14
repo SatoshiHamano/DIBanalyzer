@@ -11,6 +11,9 @@ __pycache__/
 *.log
 logfile
 splot.log
+workbench_review_notes.json
+workbench_review_notes.json.tmp
+telluric_validation/
 
 # Large/generated science products kept outside normal version control
 *.fits
