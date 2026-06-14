@@ -4,7 +4,8 @@
 運用メモです。まずは既存スクリプトを壊さず、どの順番で何を実行していたかを
 見えるようにすることを目的にしています。
 
-DB 構造は `DB_SCHEMA_NOTES.md`、スクリプト整理方針は
+DB 構造は `DB_SCHEMA_NOTES.md`、DB 登録を軸にした課題一覧は
+`DB_REGISTRATION_WORKFLOW.md`、スクリプト整理方針は
 `SCRIPT_ORGANIZATION.md` を参照してください。
 
 ## Big picture
@@ -380,4 +381,3 @@ First targets for improvement:
 
 5. `dibctl.py workflow next OBJECT_ID`
    - Print the next likely action for an object based on DB state.
-
