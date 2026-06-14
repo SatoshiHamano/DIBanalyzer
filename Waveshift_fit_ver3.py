@@ -147,7 +147,7 @@ if __name__ == "__main__":
 
     print("{} data was found in DIB database.".format(len(pipelineID)))
 
-    tellinefile = open("Waveshift_main_ver4/telluric_single_list_ordered_selected3.dat", "r")
+    tellinefile = open("legacy/waveshift_main_ver4/telluric_single_list_ordered_selected3.dat", "r")
     tellinelines = tellinefile.readlines()
     tellinefile.close()
     linecenterlist = [float(i.split()[0]) for i in tellinelines]

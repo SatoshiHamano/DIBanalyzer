@@ -1,0 +1,15 @@
+###Sample file###
+
+Time: 2016-05-09 16:20:38.001034
+
+HR196_20141017: success
+HIP76267_20130228: success
+HIP28360_20130223: success
+HR1041_20131130: success
+50Cas_20131225: success
+50Cas_20140819: failure
+rhoPeg_20140911: success
+HR1683_20160127: success
+HR7159_20151025: success
+
+
