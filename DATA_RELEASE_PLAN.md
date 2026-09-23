@@ -42,33 +42,27 @@
   - measurement products
 - object ごとの公開可否に例外があるか。
 - FITS header に削除すべき内部情報やローカルパスが含まれるか。
-- GitHub Releaseを正式な配布・引用先としてよいか。
+- GitHub Releaseを正式な配布先としてよいか。
 - 将来DOIを付与する場合、論文データまたはWINERED data productのどちらとして
   記述するか。DOI付与は初回公開の前提にしない。
-- ライセンスをどうするか。
+- ライセンス: `CC BY 4.0`。
 
-### Recommended use policy after initial collaborator feedback
+### Use policy after collaborator feedback
 
-最終公開版は、権利者・WINEREDチームの承認を前提として、データを
-`CC BY 4.0`で公開する案を第一候補とする。通常利用に共同研究・共著を必須条件と
-すると、公開データとしての再利用条件が不明瞭になる。代わりに次を明示する。
+データは`CC BY 4.0`で公開する。利用条件は次の通りとする。
 
-- 使用したGitHub ReleaseのtagまたはURLを引用情報として示すよう求める。
-- 将来dataset DOIを付与した場合は、そのDOIも推奨citationへ追加する。
 - 使用した天体に対応する出版論文の引用を求める。
-- 大規模再解析、系統誤差の再評価、未出版対象を使う研究では事前連絡と共同研究を
-  歓迎するが、通常の再利用における法的な必須条件にはしない。
-- candidate版はライセンス確定前であり、出版利用・再配布はデータ提供者への確認を
-  求める。
+- GitHub repositoryまたはGitHub Releaseの引用は求めない。
+- 事前許可、共同研究、共著を利用条件にしない。
+- 利用、改変、再配布は`CC BY 4.0`の条件に従って認める。
 
-GitHub Releaseのtagを版識別子として正式な配布・引用先にする。ライセンス、
-creator、各論文との関係、推奨citationをRelease本文とREADMEの両方へ記載する。
-DOI付与サービスへの登録は、永続識別子が必要になった場合の追加作業とする。
+GitHub Releaseを正式な配布先にする。ライセンス、各論文との関係、引用方法を
+Release本文、README、`LICENSE.txt`へ記載する。DOI付与サービスへの登録は、
+永続識別子が必要になった場合の追加作業とする。
 
 現candidate版の`MANIFEST_sanitized.csv`には`source_fits_path`としてローカル絶対
 パスが含まれていた。公開manifest生成処理は、basenameとパッケージ内相対パスだけを
-出力するよう修正した。GitHub Release上の既存zipは未更新なので、README改訂と
-合わせてcandidate v2を作る際に差し替える。
+出力するよう修正し、GitHub Release上のzipも更新した。
 
 ## FITS header review
 

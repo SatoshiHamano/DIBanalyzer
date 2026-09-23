@@ -1,24 +1,18 @@
-# WINERED DIB spectrum candidate package
+# WINERED DIB spectrum data package
 
 This package contains sanitized copies of processed WINERED spectra selected
 from the DIBproject database and release inventory.
 
-## Release status and download
+## Download
 
-The current package is a **candidate package for collaborator evaluation**, not
-yet the final approved data release. It can be downloaded from the following
-tagged GitHub Release:
+The package can be downloaded from the following tagged GitHub Release:
 
-- [WINERED DIB spectra candidate package](https://github.com/SatoshiHamano/DIBanalyzer/releases/tag/winered-dib-spectra-candidate-2026-09-12)
-
-After the data policy, creators, license, coordinate metadata, and publication
-mapping have been approved, a new tagged GitHub Release can serve as the stable
-distribution and citation target. Deposit in a DOI-granting archive may be
-added later, but it is not a prerequisite for this release.
+- [WINERED DIB spectrum data package](https://github.com/SatoshiHamano/DIBanalyzer/releases/tag/winered-dib-spectra-candidate-2026-09-12)
 
 ## Contents
 
 - `spectra/`: FITS files grouped by object name and `combineID`.
+- `LICENSE.txt`: CC BY 4.0 license notice for the data package.
 - `MANIFEST_sanitized.csv`: one row per FITS file, including object metadata,
   `combineID`, echelle order, source filename, package-relative release path,
   wavelength range, and publication tags.
@@ -33,9 +27,6 @@ added later, but it is not a prerequisite for this release.
 - Instrument mode: WIDE
 - Processing level: processed, telluric-corrected, wavelength-corrected,
   heliocentric spectra as referenced by the DIBproject database inventory.
-
-This is a candidate sharing package for collaborators. It should still be
-checked against the relevant data policy before the final public release.
 
 ### Relationship to published studies
 
@@ -67,33 +58,22 @@ Relevant papers currently identified are:
   0.91-1.32 micrometers*,
   DOI: https://doi.org/10.1088/0004-637X/800/2/137
 
-## Use, citation, and collaboration
+## License and citation
 
-No final public-use license has yet been approved for this candidate package.
-Until that decision is made, recipients should contact the data providers
-before using the spectra in a publication or redistributing them.
+This data package is licensed under the **Creative Commons Attribution 4.0
+International License (CC BY 4.0)**. The data may be used, modified, and
+redistributed under the terms of that license. See `LICENSE.txt` and
+https://creativecommons.org/licenses/by/4.0/.
 
-For the final approved release, the proposed policy is:
-
-- release the approved data under **Creative Commons Attribution 4.0
-  International (CC BY 4.0)**
-  (https://creativecommons.org/licenses/by/4.0/);
-- require attribution under that license;
-- request citation of the exact GitHub Release tag (and a dataset DOI if one is
-  assigned later) and the relevant paper or papers identified in `OBJECTS.csv`;
-- encourage users to contact the WINERED/DIB team about substantial reanalysis,
-  interpretation, or extensions for possible collaboration;
-- do not make co-authorship or collaboration a general condition of ordinary
-  data reuse.
-
-The final wording and attribution names require confirmation by the data
-rights holders and the WINERED team. A license can only be applied by parties
-authorized to grant those rights.
+When using the spectra in scientific work, cite the relevant publication or
+publications listed above and identified for each object in `OBJECTS.csv`. A
+separate citation to the GitHub repository or GitHub Release is not required.
+Prior permission, collaboration, and co-authorship are not conditions of use.
 
 ## Known validation limitations
 
 These files are historical processed products selected through the current
-DIBproject database. The following checks remain before the final release:
+DIBproject database. The following technical validation work remains:
 
 - reconstruct and verify the observing-run, instrument-mode, and pipeline-version
   mapping for wavelength-correction parameter sets;
@@ -103,7 +83,7 @@ DIBproject database. The following checks remain before the final release:
 One historical product inspected during software auditing contained conflicting
 `CDELT1` and `CD1_1` values, and the applied run-specific wavelength-calibration
 file is not recorded in historical output metadata. Until the package-wide
-checks are complete, this candidate package should not be treated as validated
+checks are complete, this data package should not be treated as validated
 for precision radial-velocity or line-center measurements. This caveat does not
 by itself establish that all or most spectra are affected.
 
