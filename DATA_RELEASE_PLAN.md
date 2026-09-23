@@ -1,6 +1,6 @@
 # Data release plan for published WINERED DIB products
 
-この文書は、出版済み DIB 論文に対応するスペクトルや測定値を Zenodo 等で
+この文書は、出版済み DIB 論文に対応するスペクトルや測定値をGitHub Release等で
 公開できるか判断し、公開用パッケージを作るための作業メモです。
 
 目的は、このリポジトリ全体を公開することではありません。ローカル DB、
@@ -42,9 +42,33 @@
   - measurement products
 - object ごとの公開可否に例外があるか。
 - FITS header に削除すべき内部情報やローカルパスが含まれるか。
-- Zenodo の WINERED community に登録してよいか。
-- DOI を論文データとして紐づけるか、WINERED data product として紐づけるか。
+- GitHub Releaseを正式な配布・引用先としてよいか。
+- 将来DOIを付与する場合、論文データまたはWINERED data productのどちらとして
+  記述するか。DOI付与は初回公開の前提にしない。
 - ライセンスをどうするか。
+
+### Recommended use policy after initial collaborator feedback
+
+最終公開版は、権利者・WINEREDチームの承認を前提として、データを
+`CC BY 4.0`で公開する案を第一候補とする。通常利用に共同研究・共著を必須条件と
+すると、公開データとしての再利用条件が不明瞭になる。代わりに次を明示する。
+
+- 使用したGitHub ReleaseのtagまたはURLを引用情報として示すよう求める。
+- 将来dataset DOIを付与した場合は、そのDOIも推奨citationへ追加する。
+- 使用した天体に対応する出版論文の引用を求める。
+- 大規模再解析、系統誤差の再評価、未出版対象を使う研究では事前連絡と共同研究を
+  歓迎するが、通常の再利用における法的な必須条件にはしない。
+- candidate版はライセンス確定前であり、出版利用・再配布はデータ提供者への確認を
+  求める。
+
+GitHub Releaseのtagを版識別子として正式な配布・引用先にする。ライセンス、
+creator、各論文との関係、推奨citationをRelease本文とREADMEの両方へ記載する。
+DOI付与サービスへの登録は、永続識別子が必要になった場合の追加作業とする。
+
+現candidate版の`MANIFEST_sanitized.csv`には`source_fits_path`としてローカル絶対
+パスが含まれていた。公開manifest生成処理は、basenameとパッケージ内相対パスだけを
+出力するよう修正した。GitHub Release上の既存zipは未更新なので、README改訂と
+合わせてcandidate v2を作る際に差し替える。
 
 ## FITS header review
 
@@ -98,7 +122,7 @@ private/internal keywords を削除する sanitizer を用意することです�
 - add:
   - `ORIGFILE` or release manifest reference
   - `RELEASE`
-  - `DOI` after Zenodo DOI is known
+  - `DOI` if a dataset DOI is assigned later
   - `REFERENC` for the paper citation
 
 ### Sanitizer script
@@ -142,10 +166,10 @@ PYTHONDONTWRITEBYTECODE=1 python3 release_tools/sanitize_fits_for_release.py --l
 - `RELEASE=WINERED_DIB_PUBLISHED_DATA` を追加
 - `HISTORY` に sanitizer 実行履歴と削除キーを記録
 
-全件実行はまだしていません。次に進む場合は、reference 表記と DOI placeholder の
-方針を決めてから 1000 件すべてを処理します。
+全件実行はまだしていません。次に進む場合は、reference表記を決めてから1000件
+すべてを処理します。dataset DOIは未設定のまま公開可能です。
 
-## Proposed Zenodo package
+## Proposed release package
 
 推奨する構成:
 
@@ -195,7 +219,7 @@ winered-dib-published-data/
 5. 公開用ディレクトリへコピーするスクリプトを作る。
 6. README と citation を作る。
 7. 小さなサンプル package で内容確認する。
-8. チーム確認後、Zenodo 用 package を作る。
+8. チーム確認後、版付きGitHub Releaseを作る。
 
 ## Likely source tables
 
@@ -222,7 +246,7 @@ DB 側の主な参照元:
 
 ここにある appendix table や figure 作成スクリプトは、公開 package の
 table 内容や README を確認する参考になります。ただし、このディレクトリを
-そのまま Zenodo package に含めるのではなく、必要な成果物だけを整理して
+そのまま公開packageに含めるのではなく、必要な成果物だけを整理して
 取り出します。
 
 ## Prior shared dataset trace
@@ -490,7 +514,7 @@ python dibctl.py release inventory --paper weak-dib
 
 - 出版済み論文に対応する reduced products を公開できるか確認したい。
 - raw data や未公開共同研究データではなく、まず論文対応データに限定する。
-- Zenodo WINERED community での公開はよい候補。
+- GitHub Releaseを版付きの正式配布元にできる。
 - object list、spectra、DIB measurement table、README をまとめる方向で
   準備できる。
 - 公開可否と処理段階について WINERED チーム内で確認したい。

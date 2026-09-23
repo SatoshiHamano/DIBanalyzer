@@ -1,0 +1,141 @@
+# WINERED DIB spectrum candidate package
+
+This package contains sanitized copies of processed WINERED spectra selected
+from the DIBproject database and release inventory.
+
+## Release status and download
+
+The current package is a **candidate package for collaborator evaluation**, not
+yet the final approved data release. It can be downloaded from the following
+tagged GitHub Release:
+
+- [WINERED DIB spectra candidate package](https://github.com/SatoshiHamano/DIBanalyzer/releases/tag/winered-dib-spectra-candidate-2026-09-12)
+
+After the data policy, creators, license, coordinate metadata, and publication
+mapping have been approved, a new tagged GitHub Release can serve as the stable
+distribution and citation target. Deposit in a DOI-granting archive may be
+added later, but it is not a prerequisite for this release.
+
+## Contents
+
+- `spectra/`: FITS files grouped by object name and `combineID`.
+- `MANIFEST_sanitized.csv`: one row per FITS file, including object metadata,
+  `combineID`, echelle order, source filename, package-relative release path,
+  wavelength range, and publication tags.
+- `OBJECTS.csv`: one row per object, with the database object ID, preferred
+  name, aliases, RA and Dec in sexagesimal and decimal-degree forms, spectral
+  type, E(B-V), included `combineID` values, and publication tags.
+
+## Scope
+
+- Number of objects: 50
+- Number of FITS spectra: 1000
+- Instrument mode: WIDE
+- Processing level: processed, telluric-corrected, wavelength-corrected,
+  heliocentric spectra as referenced by the DIBproject database inventory.
+
+This is a candidate sharing package for collaborators. It should still be
+checked against the relevant data policy before the final public release.
+
+### Relationship to published studies
+
+This package is based on a processed-spectrum collection that was previously
+assembled for sharing with a research collaborator. That collection combined
+the main 2022 study sample with additional DIB targets:
+
+- The package contains spectra for all **31 reddened target objects** analyzed
+  in Hamano et al. (2022). The unreddened reference star Rigel is not included.
+- **19 objects** are supplementary DIB targets included in that collaborator
+  dataset in addition to the 2022 sample.
+- Of those 19 additional objects, **five** are targets included in Hamano et al.
+  (2015) or Hamano et al. (2016): Cyg OB2 No. 11, HD 12953, HD 21389,
+  zeta Ori A, and HD 50064.
+- The remaining **14 objects** are unpublished DIB targets.
+
+For each object, `OBJECTS.csv` records the publication tags and DOI mappings.
+`MANIFEST_sanitized.csv` repeats these tags per spectrum.
+
+Relevant papers currently identified are:
+
+- Hamano et al. (2022), *Survey of near-infrared diffuse interstellar bands in
+  Y and J bands. I. Newly identified bands*,
+  DOI: https://doi.org/10.3847/1538-4365/ac7567
+- Hamano et al. (2016), *Near Infrared Diffuse Interstellar Bands Toward the
+  Cygnus OB2 Association*,
+  DOI: https://doi.org/10.3847/0004-637X/821/1/42
+- Hamano et al. (2015), *Near-infrared diffuse interstellar bands in
+  0.91-1.32 micrometers*,
+  DOI: https://doi.org/10.1088/0004-637X/800/2/137
+
+## Use, citation, and collaboration
+
+No final public-use license has yet been approved for this candidate package.
+Until that decision is made, recipients should contact the data providers
+before using the spectra in a publication or redistributing them.
+
+For the final approved release, the proposed policy is:
+
+- release the approved data under **Creative Commons Attribution 4.0
+  International (CC BY 4.0)**
+  (https://creativecommons.org/licenses/by/4.0/);
+- require attribution under that license;
+- request citation of the exact GitHub Release tag (and a dataset DOI if one is
+  assigned later) and the relevant paper or papers identified in `OBJECTS.csv`;
+- encourage users to contact the WINERED/DIB team about substantial reanalysis,
+  interpretation, or extensions for possible collaboration;
+- do not make co-authorship or collaboration a general condition of ordinary
+  data reuse.
+
+The final wording and attribution names require confirmation by the data
+rights holders and the WINERED team. A license can only be applied by parties
+authorized to grant those rights.
+
+## Known validation limitations
+
+These files are historical processed products selected through the current
+DIBproject database. The following checks remain before the final release:
+
+- reconstruct and verify the observing-run, instrument-mode, and pipeline-version
+  mapping for wavelength-correction parameter sets;
+- validate wavelength WCS consistency in all released FITS files;
+- document the legacy IRAF telluric-correction path and residual limitations.
+
+One historical product inspected during software auditing contained conflicting
+`CDELT1` and `CD1_1` values, and the applied run-specific wavelength-calibration
+file is not recorded in historical output metadata. Until the package-wide
+checks are complete, this candidate package should not be treated as validated
+for precision radial-velocity or line-center measurements. This caveat does not
+by itself establish that all or most spectra are affected.
+
+## FITS header sanitization
+
+The original FITS files were not modified. Public-sharing copies were created
+with the following internal/private header keywords removed when present:
+
+- `FITSFILE`
+- `OBSERVER`
+- `WODBPI`
+- `WODBOBS`
+- `WODBPROP`
+
+The sanitizer also adds a `RELEASE` keyword and HISTORY entries noting that the
+copy was sanitized.
+
+## Directory layout
+
+```text
+spectra/
+  OBJECT_NAME/
+    COMBINE_ID/
+      *_mORDER_*.fits
+```
+
+Use `MANIFEST_sanitized.csv` as the authoritative index for object IDs,
+aliases, `combineID`, echelle order, wavelength range, and provenance tags.
+Paths in this public manifest are relative to the package; local source paths
+are deliberately omitted.
+
+Use `OBJECTS.csv` for object identification. Its coordinates come from the
+DIBproject database columns `object.ra` and `object.decli`. The coordinate
+frame and equinox were not recorded in the release inventory and should be
+verified before the final public release.

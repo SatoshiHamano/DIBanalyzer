@@ -108,7 +108,7 @@ def write_manifest(rows, manifest_path):
         "obs_date",
         "db_wavelength_min",
         "db_wavelength_max",
-        "source_fits_path",
+        "source_fits_name",
         "release_fits_path",
         "source_sha256",
         "release_sha256",
@@ -153,7 +153,7 @@ def build_parser():
         help="Value written to RELEASE header keyword.",
     )
     parser.add_argument("--reference", default="", help="Publication reference.")
-    parser.add_argument("--doi", default="", help="Zenodo DOI, when available.")
+    parser.add_argument("--doi", default="", help="Dataset DOI, when available.")
     parser.add_argument("--limit", type=int, default=0, help="Only process first N rows.")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
@@ -213,8 +213,11 @@ def main():
                 "obs_date": row.get("obs_date", ""),
                 "db_wavelength_min": row.get("db_wavelength_min", ""),
                 "db_wavelength_max": row.get("db_wavelength_max", ""),
-                "source_fits_path": source,
-                "release_fits_path": target,
+                "source_fits_name": os.path.basename(source),
+                "release_fits_path": os.path.relpath(
+                    os.path.abspath(target),
+                    start=os.path.dirname(os.path.abspath(args.manifest)),
+                ),
                 "source_sha256": source_sha,
                 "release_sha256": release_sha,
                 "removed_header_keys": ",".join(removed),
